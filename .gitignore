@@ -85,6 +85,8 @@ coverage.xml
 *.cover 
 .hypothesis/ 
 
+.dbdata
+
 # Jupyter Notebook 
 .ipynb_checkpoints 
 

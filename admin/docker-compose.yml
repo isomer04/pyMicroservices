@@ -43,7 +43,7 @@ services:
   
 
   db:
-    image: mysql:5.7.22
+    image: mysql:latest
     restart: always
     environment:
       MYSQL_DATABASE: admin

@@ -83,10 +83,11 @@ DATABASES = {
         'NAME': 'admin',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'db',
-        'PORT': '3306',
+        'HOST': 'db',  # This should match the service name in docker-compose.yml
+        'PORT': '3306',  # This should match the exposed port of the MySQL container
     }
 }
+
 
 
 # Password validation
