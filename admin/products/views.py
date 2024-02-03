@@ -22,6 +22,7 @@ class ProductViewSet(viewsets.ViewSet):
         serializer = ProductSerlizers(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        publish('product_created', serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
     def retrieve(self, request, pk=None): # /api/products/<str:id>
@@ -34,11 +35,13 @@ class ProductViewSet(viewsets.ViewSet):
         serilizer = ProductSerlizers(isinstance=product, data=request.data)
         serilizer.is_valid(raise_exception=True)
         serilizer.save()
+        publish('product_updated', serilizer.data)
         return Response(serilizer.data, status=status.HTTP_202_ACCEPTED)
     
     def destroy(self, request, pk=None): # /api/products/<str:id>
         product = Product.objects.get(id=pk)
         product.delete()
+        publish('product_deleted', pk)
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class UserAPIView(APIView):
